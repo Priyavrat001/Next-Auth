@@ -1,33 +1,35 @@
-import React from 'react'
+import { Button } from "@/components/ui/button"
 import {
     Card,
     CardContent,
-    CardDescription,
     CardFooter,
     CardHeader,
-    CardTitle,
+    CardTitle
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import { LoginForm } from "@/components/ui/client/form"
+import Link from 'next/link'
 
 
 const Page = () => {
+
     return (
         <div className="flex justify-center items-center h-dvh">
             <Card>
                 <CardHeader>
                     <CardTitle>Login</CardTitle>
-                    <CardDescription>Card Description</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <form action="">
-                    <Input type='email' placeholder='Email'/>
-                    <Input type='password' placeholder='Password'/>
-                    <Button className='bg-black text-white w-full hover:text-black' type='submit'>Login</Button>
-                    </form>
+                <LoginForm/>
                 </CardContent>
-                <CardFooter>
-                    <p>Card Footer</p>
+                <CardFooter className='flex flex-col gap-4'>
+                    <span>Or</span>
+
+                    <form>
+                        <Button type="submit" variant={"outline"}>Login With Google</Button>
+                    </form>
+                    <Link href={"/signup"}>
+                        Don't have an account? signup
+                    </Link>
                 </CardFooter>
             </Card>
 

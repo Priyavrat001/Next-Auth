@@ -35,16 +35,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 const user = await User.findOne({ email }).select("+password");
 
                 if (!user) {
-                    throw new CredentialsSignin("Invaild email or password");
+                    throw new CredentialsSignin({cause:"Invaild email or password"});
                 };
                 if (!user.password) {
-                    throw new CredentialsSignin("Invaild email or password");
+                    throw new CredentialsSignin({cause:"Invaild email or password"});
                 };
 
                 const isMatch = await compare(password, user.password);
 
                 if (!isMatch) {
-                    throw new CredentialsSignin("Invaild email or password");
+                    throw new CredentialsSignin({cause:"Invaild email or password"});
                 };
 
                 return {name:user.name, email:user.email, id:user._id};
